@@ -1,0 +1,30 @@
+.h-icon {
+  --h-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--h-icon-color);
+  font-size: inherit;
+}
+/* @each $val in primary, success, warning, danger, info {
+  .h-icon--$(val) {
+    --h-icon-color: var(--h-color-$(val));
+  }
+} */
+.h-icon--primary {
+  --h-icon-color: var(--h-color-primary);
+}
+.h-icon--success {
+  --h-icon-color: var(--h-color-success);
+}
+.h-icon--warning {
+  --h-icon-color: var(--h-color-warning);
+}
+.h-icon--danger {
+  --h-icon-color: var(--h-color-danger);
+}
+.h-icon--info {
+  --h-icon-color: var(--h-color-info);
+}

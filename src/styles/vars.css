@@ -89,4 +89,8 @@
   --h-disabled-bg-color: var(--h-fill-color-light);
   --h-disabled-text-color: var(--h-text-color-placeholder);
   --h-disabled-border-color: var(--h-border-color-light);
+
+  /* Transition */
+  --h-transition-duration: 0.3s;
+  --h-transition-duration-fast: 0.2s;
 }
