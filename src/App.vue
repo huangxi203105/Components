@@ -3,6 +3,7 @@ import Button from './components/Button/Button.vue'
 import Collapse from './components/Collapse/Collapse.vue'
 import CollapseItem from './components/Collapse/CollapseItem.vue'
 import Icon from './components/Icon/Icon.vue'
+import Alert from './components/Alert/Alert.vue'
 import type { ButtonInstance } from './components/Button/types'
 import { ref, onMounted } from 'vue'
 const btnRef = ref<ButtonInstance | null>(null)
@@ -11,14 +12,19 @@ onMounted(() => {
   const btn = btnRef.value?.ref
   console.log(btn)
 })
+const handleClose = () => {
+  console.log('close')
+}
 </script>
 
 <template>
-  <main class="app">
+  <!-- <main class="app">
     <Button size="large">loading</Button>
     <Button size="large" icon="arrow-up">loading</Button>
-  </main>
-  <Collapse v-model="openedValue">
+  </main> -->
+  <Alert @close="handleClose" content="this is a alert"></Alert>
+  <Alert @close="handleClose" content="this is a alert"></Alert>
+  <!-- <Collapse v-model="openedValue">
     <CollapseItem name="item1" title="item1" :disabled="true">
       <div>item1</div>
     </CollapseItem>
@@ -28,7 +34,7 @@ onMounted(() => {
     <CollapseItem name="item3" title="item3">
       <div>item3</div>
     </CollapseItem>
-  </Collapse>
+  </Collapse> -->
 </template>
 
 <style scoped>

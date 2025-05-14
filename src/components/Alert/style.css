@@ -1,0 +1,49 @@
+/* 基础组件样式 */
+.h-alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--h-border-radius-base);
+  padding: 8px 16px;
+  margin: 0;
+  font-size: var(--h-font-size-base);
+
+  /* 通过 CSS 变量动态控制颜色 */
+  background-color: var(--h-alert-bg-color, transparent);
+  color: var(--h-alert-text-color, inherit);
+  .h-alert__close {
+    cursor: pointer;
+  }
+}
+
+/* 定义颜色类型和模式的组合 */
+.h-alert[class*='--light'] {
+  --h-alert-bg-color: var(--h-color-light-9);
+  --h-alert-text-color: var(--h-color-base);
+}
+
+.h-alert[class*='--dark'] {
+  --h-alert-bg-color: var(--h-color-base);
+  --h-alert-text-color: white;
+}
+
+/* 通过属性选择器动态注入颜色值 */
+.h-alert--success {
+  --h-color-base: var(--h-color-success);
+  --h-color-light-9: var(--h-color-success-light-9);
+}
+
+.h-alert--info {
+  --h-color-base: var(--h-color-info);
+  --h-color-light-9: var(--h-color-info-light-9);
+}
+
+.h-alert--warning {
+  --h-color-base: var(--h-color-warning);
+  --h-color-light-9: var(--h-color-warning-light-9);
+}
+
+.h-alert--danger {
+  --h-color-base: var(--h-color-danger);
+  --h-color-light-9: var(--h-color-danger-light-9);
+}
