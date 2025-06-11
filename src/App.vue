@@ -5,36 +5,40 @@ import CollapseItem from './components/Collapse/CollapseItem.vue'
 import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from './components/Tooltip/Tooltip.vue'
+import Dropdown from './components/Dropdown/Dropdown.vue'
 import type { ButtonInstance } from './components/Button/types'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,h} from 'vue'
 import type { TooltipInstance } from './components/Tooltip/types'
+import type { MenuOption } from './components/Dropdown/types'
 const btnRef = ref<ButtonInstance | null>(null)
-const openedValue = ref(['item1'])
-const tooltipRef = ref<TooltipInstance | null>(null)
-const popperOptions: Partial<Options> = {
-  placement: 'right',
-  strategy: 'absolute'
-}
 onMounted(() => {
   const btn = btnRef.value?.ref
   console.log(btn)
 })
-const handleClose = () => {
-  console.log('close')
-}
-const open = () => {
-  tooltipRef.value?.show()
-}
+const options: MenuOption[] = [
+  {
+    label: 'action1',
+    key: 'item1'
+  },
+  {
+    label: 'item2',
+    key: 'item2',
+    divided: true
+  },
+  {
+    label: 'item3',
+    disabled: true,
+    key: 'item3'
+  }
+
+]
 </script>
 
 <template>
   <main class="app">
-    <Tooltip ref="tooltipRef" :popper-options="popperOptions">
-      <Button size="large">loading</Button>
-      <template #content>
-        <div>11111</div>
-      </template>
-    </Tooltip>
+    <Dropdown @select="(value) => console.log(value)" ref="tooltipRef" :menuOptions="options">
+      <Button size="large">loadi213123ng</Button>
+    </Dropdown>
 
   </main>
   <!-- <Button size="large" @click="open">loading</Button> -->
