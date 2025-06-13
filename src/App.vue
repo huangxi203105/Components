@@ -6,14 +6,26 @@ import Icon from './components/Icon/Icon.vue'
 import Alert from './components/Alert/Alert.vue'
 import Tooltip from './components/Tooltip/Tooltip.vue'
 import Dropdown from './components/Dropdown/Dropdown.vue'
+import Message from './components/Message/Message.vue'
+import {createMessage} from './components/Message/Method'
 import type { ButtonInstance } from './components/Button/types'
 import { ref, onMounted,h} from 'vue'
 import type { TooltipInstance } from './components/Tooltip/types'
 import type { MenuOption } from './components/Dropdown/types'
 const btnRef = ref<ButtonInstance | null>(null)
 onMounted(() => {
-  const btn = btnRef.value?.ref
-  console.log(btn)
+  createMessage({
+    content: 'This is a message',
+    type: 'info',
+    duration: 0, 
+    closable: true,
+  })
+  createMessage({
+    content: 'This is a message',
+    type: 'success',
+    duration: 0,
+    closable: true,
+  })
 })
 const options: MenuOption[] = [
   {
@@ -36,9 +48,9 @@ const options: MenuOption[] = [
 
 <template>
   <main class="app">
-    <Dropdown @select="(value) => console.log(value)" ref="tooltipRef" :menuOptions="options">
+    <!-- <Dropdown @select="(value) => console.log(value)" ref="tooltipRef" :menuOptions="options">
       <Button size="large">loadi213123ng</Button>
-    </Dropdown>
+    </Dropdown> -->
 
   </main>
   <!-- <Button size="large" @click="open">loading</Button> -->

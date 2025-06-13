@@ -1,0 +1,74 @@
+.h-message{
+  --h-message-bg-color:var(--h-color-info-light);
+  --h-message-border-color: var(--h-border-color-lighter);
+  --h-message-padding: 15px 20px;
+  --h-message-colose-size:16px;
+  --h-message-close-icon-color: var(--h-text-color-placeholder);
+  --h-message-close-icon-hover-color: var(--h-text-color-secondary);
+}
+.h-message{
+  width: fit-content;
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+  border-width: var(--h-border-width);
+  border-style: var(--h-border-style);
+  border-color: var(--h-message-border-color);
+  border-radius: var(--h-border-radius-base);
+  position: fixed;
+  top:20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--h-message-bg-color);
+  padding: var(--h-message-padding);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: top var(--h-transition-duration) ease-in-out;
+  box-shadow: var(--h-box-shadow);
+  .h-message__content{
+    color:var(--h-message-text-color);
+    overflow-wrap: anywhere;
+  }
+  &.is-close .h-message__content{
+    padding-right: 30px;
+  }
+  .h-message__close{
+    display: flex;
+    align-items: center;
+  }
+  .h-message__close svg{
+    cursor: pointer;
+  }
+}
+.h-message--info{
+  --h-message-bg-color: #f6f8fa;
+  --h-message-border-color: var(--h-color-info-light-8);
+  --h-message-text-color: var(--h-color-info);
+  .h-message__close{
+    --h-icon-color:var(--h-color-info);
+  }
+}
+.h-message--success{
+  --h-message-bg-color: var(--h-color-success-light-9);
+  --h-message-border-color: var(--h-color-success-light-8);
+  --h-message-text-color: var(--h-color-success);
+  .h-message__close{
+    --h-icon-color:var(--h-color-success);
+  }
+}
+.h-message--warning{
+  --h-message-bg-color: var(--h-color-warning-light-9);
+  --h-message-border-color: var(--h-color-warning-light-8);
+  --h-message-text-color: var(--h-color-warning);
+  .h-message__close{
+    --h-icon-color:var(--h-color-warning);
+  }
+}
+.h-message--danger{
+  --h-message-bg-color: var(--h-color-danger-light-9);
+  --h-message-border-color: var(--h-color-danger-light-8);
+  --h-message-text-color: var(--h-color-danger);
+  .h-message__close{
+    --h-icon-color:var(--h-color-danger);
+  }
+}
