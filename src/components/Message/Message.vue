@@ -1,22 +1,29 @@
 <template>
-  <div 
-  v-show="visiable" 
-  class="h-message" 
-  role="alert"
-  ref="messageRef"
-  @mouseenter="clearTimer"
-  @mouseleave="startTimer"
-  :style="cssStyle"
-  :class="{[`h-message--${type}`]: type,'is-closable': props.closable}">
-    <div class="h-message__content">
-      <slot>
-        <RenderVnode :vNode="content" v-if="content"  />
-      </slot>
-    </div>
-    <div v-if="props.closable" class="h-message__close" @click="$emit('close')">
-      <Icon @click.stop="()=>visiable = false" class="h-icon h-icon-close" icon="xmark" />
-    </div>
-  </div>
+  <Transition 
+    @afterLeave="destroyComponent"
+    @enter="updateHeight"
+    :name="props.transition"
+    >
+      <div 
+      v-show="visiable" 
+      class="h-message" 
+      role="alert"
+      ref="messageRef"
+      @mouseenter="clearTimer"
+      @mouseleave="startTimer"
+      :style="cssStyle"
+      :class="{[`h-message--${type}`]: type,'is-closable': props.closable}">
+        <div class="h-message__content">
+          <slot>
+            <RenderVnode :vNode="content" v-if="content"  />
+          </slot>
+        </div>
+        <div v-if="props.closable" class="h-message__close" @click="$emit('close')">
+          <Icon @click.stop="()=>visiable = false" class="h-icon h-icon-close" icon="xmark" />
+        </div>
+      </div>
+</Transition>
+
 </template>
 
 <script setup lang="ts">
@@ -30,6 +37,7 @@ const props = withDefaults(defineProps<MessageProps>(), {
   type:'info',
   duration: 3000,
   offset: 20,
+  transition:'fade-up'
 });
 const messageRef = ref<HTMLElement | null>(null);
 const height = ref(0);
@@ -62,14 +70,18 @@ watch(()=>visiable.value, (newVal) => {
 onMounted(async()=>{
   visiable.value = true;
   startTimer()
-  await nextTick()
-  height.value = messageRef.value!.getBoundingClientRect().height;
 })
 function keydown(e:Event){
   const event = e as KeyboardEvent;
   if(event.code==='Escape'){
     visiable.value = false;
   }
+}
+function destroyComponent(){
+  props.onDestroy()
+}
+function updateHeight(){
+  height.value = messageRef.value!.getBoundingClientRect().height;
 }
 useEventListener(document,'keydown',keydown)
 defineExpose({

@@ -8,6 +8,7 @@ export interface MessageProps {
   offset?:number
   id: string;
   zIndex?: number;
+  transition?: string;
   onDestroy: () => void;
 }
 

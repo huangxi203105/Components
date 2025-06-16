@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: top var(--h-transition-duration) ease-in-out;
+  transition: top var(--h-transition-duration) ease-in-out, opacict var(--h-transition-duration), transform var(--h-transition-duration);
   box-shadow: var(--h-box-shadow);
   .h-message__content{
     color:var(--h-message-text-color);
@@ -71,4 +71,9 @@
   .h-message__close{
     --h-icon-color:var(--h-color-danger);
   }
+}
+.h-message.fade-up-enter-from,
+.h-message.fade-up-leave-to{
+  opacity: 0;
+  transform: translateY(-50%,-100%);
 }
