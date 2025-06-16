@@ -7,6 +7,7 @@ import Alert from './components/Alert/Alert.vue'
 import Tooltip from './components/Tooltip/Tooltip.vue'
 import Dropdown from './components/Dropdown/Dropdown.vue'
 import Message from './components/Message/Message.vue'
+import Input from './components/Input/Input.vue'
 import {createMessage} from './components/Message/Method'
 import type { ButtonInstance } from './components/Button/types'
 import { ref, onMounted,h} from 'vue'
@@ -44,6 +45,7 @@ const options: MenuOption[] = [
   }
 
 ]
+const modelValue=ref("213")
 </script>
 
 <template>
@@ -51,7 +53,7 @@ const options: MenuOption[] = [
     <!-- <Dropdown @select="(value) => console.log(value)" ref="tooltipRef" :menuOptions="options">
       <Button size="large">loadi213123ng</Button>
     </Dropdown> -->
-
+    <Input clearable type="input" model-value="modelValue"/>
   </main>
   <!-- <Button size="large" @click="open">loading</Button> -->
 
